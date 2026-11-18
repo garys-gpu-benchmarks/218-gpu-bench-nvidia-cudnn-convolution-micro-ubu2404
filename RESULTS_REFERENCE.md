@@ -3,7 +3,7 @@
 **Main goal:** Measure cuDNN convolution solver speed  
 **Tools:** Compile cudnn_conv.cu with nvcc -lcudnn; run bin/cudnn_conv twice via collect_cudnn_conv.py
 
-Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_145 · recorded 2026-11-17). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
+Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_146 · recorded 2026-11-18). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
 
 > Smoke runs use deliberately small sizes. They check that the workload installs and runs end to end; their numbers are not performance results. Baseline and extended are.
 
@@ -11,15 +11,15 @@ Reference results measured by the maintainer on the system shown in each section
 ## smoke
 
 - **System:** 1× NVIDIA H100 NVL (95830 MiB) · AMD EPYC 9374F 32-Core Processor · Ubuntu 24.04.5 LTS · kernel 6.8.0-138-generic · driver 595.112.07
-- **Run:** 2026-11-17T11:10:58Z · status **PASS** (exit 0)
-- **Time (mm:ss):** setup 00:40 · benchmark 00:02 · whole run 00:46
-- **Source:** run 218_20261117_111058
+- **Run:** 2026-11-18T10:59:19Z · status **PASS** (exit 0)
+- **Time (mm:ss):** setup 00:37 · benchmark 00:01 · whole run 00:46
+- **Source:** run 218_20261118_105919
 - **Command:** `bash run_benchmark.sh --smoke --dtype FP16 --conv-direction all --batch-size 1 --input-channels 8 --input-height 16 --input-width 16 --output-channels 8 --kernel-height 3 --kernel-width 3 --stride-h 1 --stride-w 1 --group-count 1 --search-strategy find --warmup-iters 1 --num-iterations 2`
 
 | # | Metric | Result |
 |---|---|---|
-| 1 | Convolution kernel execution time, forward (kernel_time_msec) | 0.019072 |
-| 2 | Achieved convolution throughput, forward, TFLOP/s (tflops_fwd) | 0.015463 |
-| 3 | Minimum forward operand traffic, GB/s (min_operand_traffic_gb_s) | 0.489933 |
-| 4 | Solver search time (solver_search_msec), sum of cudnnFind wall time across the directions run | 189.605867 |
+| 1 | Convolution kernel execution time, forward (kernel_time_msec) | 0.027552 |
+| 2 | Achieved convolution throughput, forward, TFLOP/s (tflops_fwd) | 0.010704 |
+| 3 | Minimum forward operand traffic, GB/s (min_operand_traffic_gb_s) | 0.339141 |
+| 4 | Solver search time (solver_search_msec), sum of cudnnFind wall time across the directions run | 186.213718 |
 <!-- /profile:smoke -->
